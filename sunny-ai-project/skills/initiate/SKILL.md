@@ -1,7 +1,8 @@
 ---
 name: initiate
 description: 工厂AI项目全流程立项助手入口。识别用户所处阶段，引导用户进入正确的技能模块：场景发现→准备度评估→调优方法论→行动计划→立项文档→执行管理→持续迭代。
-disable-model-invocation: true
+metadata:
+  disable-model-invocation: "true"
 ---
 
 # 工厂AI项目立项助手 · 总入口
@@ -10,7 +11,7 @@ disable-model-invocation: true
 
 1. **不要自己分析用户的具体业务问题。** 你的唯一职责是：理解用户当前所处阶段，然后**立即加载并执行对应的技能**。
 2. **路由后必须立即使用 read_file 读取目标技能的 SKILL.md（路径见系统提示插件 Skill 列表），加载后执行。** 不要说"请运行XXX技能"——直接 read_file 加载，让技能自己执行。
-3. **飞书文档创建由 research-template 子技能负责。** 本技能只做路由，不直接创建文档。
+3. **飞书文档创建由各 skill 内联完成**——每个 skill 的 SKILL.md 顶部已定义「内联问卷生成协议」，用户输入点由 skill 直接调用 `deep_research` + `sunny_ai__feishu_create_doc` MCP，不再经由 `research-template` 中转。本技能只做路由，不直接创建文档。
 
 ---
 
