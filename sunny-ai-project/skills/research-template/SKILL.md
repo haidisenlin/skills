@@ -36,13 +36,14 @@ metadata:
 
 **步骤 1 · 目标分析** — 判断专业领域、适配方法论、关键信息类型。
 
-**步骤 2 · 调用 `deep_research`** — query 构造：
+**步骤 2 · 调用 `deep_research`** — query 的目标是**"向用户提问所用的访谈 / 评估方法论"**，不是"问题的领域知识答案"。构造：
 ```
-[topic 中文核心词] + [scenario 关键词] + "评估框架 最佳实践 模板 制造业 工厂 AI"
-+ 英文补充：[topic 英文] + "assessment framework best practice checklist manufacturing"
+[intake 目标中文] + "访谈框架 / 问卷设计 / 结构化评估协议"
++ 英文：[intake goal] + "intake framework / interview protocol / structured questionnaire / assessment checklist"
++ 列举 2-3 个真实方法论名（SIPOC / GQM / CRISP-DM Business Understanding / NIST AI RMF Map / Hoshin X-Matrix / ADKAR / McKinsey Rewired Diagnostic 等）
 ```
 
-权威来源：McKinsey / BCG / Deloitte / WEF Lighthouse / INCIT AIMRI / AIAG-VDA FMEA / ISO 13053 / ISO 55001 / MIT 工业绩效中心 / Fraunhofer / 工业互联网产业联盟（AII）。
+权威来源：McKinsey Rewired / BCG AI at Scale / Deloitte / WEF Lighthouse / INCIT AIMRI / AIAG-VDA FMEA / DAMA-DMBOK / NIST AI RMF / ISO 13053 / 55001 / PMI PMBOK / PRINCE2 / Prosci ADKAR / Kotter / Basili GQM / 工业互联网产业联盟（AII）。
 
 **步骤 3 · 合成 3-5 条方法论洞察**。
 

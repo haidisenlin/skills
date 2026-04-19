@@ -15,7 +15,12 @@ allowed-tools: deep_research WebFetch sunny_ai__feishu_create_doc sunny_ai__feis
 
 本 skill 所有"问卷式模块"（W1/W2/W4/W5 + 3 轮深度收集）**直接内联**调用 `deep_research` + `sunny_ai__feishu_create_doc`，**不经 research-template**。各 reference 文件只提供差异参数，其余按本协议执行。
 
-**A · deep_research（必做）** — 按 reference 的 `research_query` 执行一次。query 构造：`[topic 中文核心词] + [scenario 关键词] + "评估框架 最佳实践 模板 制造业 工厂 AI" + 英文补充`。权威来源：McKinsey / BCG / WEF Lighthouse / INCIT AIMRI / Six Sigma（SIPOC/DMAIC）/ Basili GQM / Bernard Marr / ISO / AIAG-VDA。
+**A · deep_research（必做）** — query 的目标是**"向用户提问所用的访谈/评估方法论"**（SIPOC / GQM / 5W1H / A3 / CRISP-DM Business Understanding / Bernard Marr AI Use Case Canvas / NIST AI RMF Map / Hoshin X-Matrix / AIAG FMEA / Prosci ADKAR / Kotter 8-step / McKinsey Rewired Diagnostic 等），**不是**"问题的领域知识答案"。用户此刻还没给出完整问题，我们要的是"**怎么问才能把信息问全**"的访谈工具，不是"问题怎么解决"的答案。
+
+query 构造：`[intake 目标中文] + "访谈框架 / 问卷设计 / 结构化评估协议" + [intake goal 英文] + "intake framework / interview protocol / structured questionnaire / assessment checklist" + 列举 2-3 个真实方法论名`
+
+权威来源：McKinsey Rewired / BCG AI at Scale / WEF Lighthouse / INCIT AIMRI / ISO 13053 / 55001 / AIAG-VDA FMEA / DAMA-DMBOK / NIST AI RMF / PMI PMBOK / PRINCE2 / Prosci ADKAR / Kotter / Basili GQM。
+
 **B · 合成 3-5 条洞察**（标准维度 / 关键指标 / 信息价值 / 行业模板特征）。
 **C · 生成飞书内容** — 🟡 推荐填 / ⚪ 选填两档；**无必填**（现场 workshop 时间紧，缺项标低置信度继续）；推荐填:选填 ≈ 6:4；量化 ≥ 50%；每章节 ≤ 8 行；末尾「📌 填写说明」。
 **D · 调 `sunny_ai__feishu_create_doc`** — title = 差异参数里的 doc_name，content = markdown 全文；失败降级为贴 markdown。

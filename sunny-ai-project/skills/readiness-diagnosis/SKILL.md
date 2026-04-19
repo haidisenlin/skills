@@ -16,7 +16,12 @@ allowed-tools: deep_research WebFetch sunny_ai__feishu_create_doc Read Write
 
 本 skill 所有"问卷式输入点"**直接内联**调用 `deep_research` + `sunny_ai__feishu_create_doc`，**不经 research-template**。
 
-**A · deep_research（必做）** — 构造 query：`[topic 中文] + [scenario] + "评估框架 最佳实践 制造业 AI" + 英文`。权威来源：McKinsey / BCG / WEF / INCIT / ISO / AIAG-VDA。
+**A · deep_research（必做）** — query 的目标是**"向用户提问所用的访谈/评估方法论"**（SIPOC / GQM / 5W1H / A3 / CRISP-DM Business Understanding / Bernard Marr AI Use Case Canvas / NIST AI RMF Map / Hoshin X-Matrix / AIAG FMEA / Prosci ADKAR / Kotter 8-step / McKinsey Rewired Diagnostic 等），**不是**"问题的领域知识答案"。用户此刻还没给出完整问题，我们要的是"**怎么问才能把信息问全**"的访谈工具，不是"问题怎么解决"的答案。
+
+query 构造：`[intake 目标中文] + "访谈框架 / 问卷设计 / 结构化评估协议" + [intake goal 英文] + "intake framework / interview protocol / structured questionnaire / assessment checklist" + 列举 2-3 个真实方法论名`
+
+权威来源：McKinsey Rewired / BCG AI at Scale / WEF Lighthouse / INCIT AIMRI / ISO 13053 / 55001 / AIAG-VDA FMEA / DAMA-DMBOK / NIST AI RMF / PMI PMBOK / PRINCE2 / Prosci ADKAR / Kotter / Basili GQM。
+
 **B · 合成 3-5 条洞察**（维度/指标/信息价值/模板特征）。
 **C · 生成飞书内容** — 🟡 推荐填 / ⚪ 选填两档；6:4 比例；量化 ≥ 50%；每章节 ≤ 8 行；末尾加「📌 填写说明」。
 **D · 调 `sunny_ai__feishu_create_doc`**（title = doc_name，content = markdown）；失败降级为贴 markdown。
@@ -32,7 +37,7 @@ allowed-tools: deep_research WebFetch sunny_ai__feishu_create_doc Read Write
 差异参数：
 
 ```
-research_query: "industrial AI readiness diagnosis input checklist six dimensions strategic data technical process organizational change maturity assessment McKinsey BCG WEF Lighthouse INCIT AIMRI"
+research_query: "AI 准备度诊断输入汇总访谈框架 六维综合档案整合问卷 McKinsey Rewired diagnostic protocol INCIT AIMRI assessment interview BCG AI at Scale diagnostic questionnaire manufacturing AI readiness intake aggregation interview"
 topic: "工厂 AI 项目六维准备度诊断 · 输入清单"
 scenario: [用户已完成的目标定义 + 六维资料收集飞书链接]
 industry: [用户行业]
@@ -156,7 +161,7 @@ C · 分阶段设目标（推荐优先）：
 差异参数：
 
 ```
-research_query: "AI project goal calibration ambition reality stage gate phased milestone manufacturing AI target recalibration McKinsey OKR confidence 目标校准 阶段里程碑"
+research_query: "AI 项目目标校准约束与资源访谈框架 McKinsey ambition reality calibration interview OKR recalibration questionnaire Stage-Gate decision interview protocol 不可变约束与可调资源结构化访谈 manufacturing AI goal recalibration intake"
 topic: "工厂 AI 项目目标校准 · 约束补充与方案选择"
 scenario: [用户的诊断报告 + 选择的校准选项 A/B/C]
 industry: [用户行业]

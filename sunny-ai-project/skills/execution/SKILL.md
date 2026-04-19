@@ -18,7 +18,12 @@ metadata:
 
 本 skill 所有"问卷式输入点"**直接内联**调用 `deep_research` + `sunny_ai__feishu_create_doc`。
 
-**A · deep_research** — query = `[topic 中文] + [scenario] + "评估框架 最佳实践 制造业 AI" + 英文`。权威：Stage-Gate / PMBOK / DMAIC / McKinsey / WEF。
+**A · deep_research（必做）** — query 的目标是**"向用户提问所用的访谈/评估方法论"**（SIPOC / GQM / 5W1H / A3 / CRISP-DM Business Understanding / Bernard Marr AI Use Case Canvas / NIST AI RMF Map / Hoshin X-Matrix / AIAG FMEA / Prosci ADKAR / Kotter 8-step / McKinsey Rewired Diagnostic 等），**不是**"问题的领域知识答案"。用户此刻还没给出完整问题，我们要的是"**怎么问才能把信息问全**"的访谈工具，不是"问题怎么解决"的答案。
+
+query 构造：`[intake 目标中文] + "访谈框架 / 问卷设计 / 结构化评估协议" + [intake goal 英文] + "intake framework / interview protocol / structured questionnaire / assessment checklist" + 列举 2-3 个真实方法论名`
+
+权威来源：McKinsey Rewired / BCG AI at Scale / WEF Lighthouse / INCIT AIMRI / ISO 13053 / 55001 / AIAG-VDA FMEA / DAMA-DMBOK / NIST AI RMF / PMI PMBOK / PRINCE2 / Prosci ADKAR / Kotter / Basili GQM。
+
 **B · 合成 3-5 条洞察**。
 **C · 生成飞书** — 🟡/⚪；6:4；量化 ≥ 50%；每章节 ≤ 8 行；末尾「📌 填写说明」。
 **D · 调 `sunny_ai__feishu_create_doc`**（失败降级为贴 markdown）。
@@ -42,7 +47,7 @@ metadata:
 差异参数：
 
 ```
-research_query: "Agile Stage-Gate project progress review KPI tracking risk register DMAIC CRISP-DM manufacturing AI Stage {N} governance PMBOK monthly review"
+research_query: "AI 项目 Stage 进度收集访谈框架 PMBOK monitoring phase interview Agile sprint review protocol DMAIC Control assessment questionnaire RACI checkpoint intake manufacturing AI project progress structured interview"
 topic: "工厂 AI 项目 Stage {用户当前 Stage} 进度收集"
 scenario: [项目名 + AI 类型 + 当前 Stage + 需要的支持类型]
 industry: 舜宇光学 精密光电制造
@@ -75,7 +80,7 @@ purpose: "收集当前 Stage 执行现状，精准匹配 Gate 评审 / 风险预
 差异参数：
 
 ```
-research_query: "AI project monthly status report manufacturing PMBOK KPI milestone risk escalation management review 月报 里程碑 风险 阻碍"
+research_query: "AI 项目月报状态收集访谈框架 PMBOK status report interview template SLC situation-learning-change questionnaire RAG status elicitation protocol manufacturing monthly review structured intake milestone KPI risk 阻碍访谈"
 topic: "AI 调优项目月报收集"
 scenario: [项目名 + 当前 Stage + 上月里程碑 + KPI 列表]
 industry: 舜宇光学 精密光电制造

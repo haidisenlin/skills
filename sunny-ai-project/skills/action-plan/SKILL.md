@@ -16,7 +16,12 @@ allowed-tools: deep_research WebFetch sunny_ai__feishu_create_doc Read Write
 
 本 skill 所有"问卷式输入点"**直接内联**调用 `deep_research` + `sunny_ai__feishu_create_doc`。
 
-**A · deep_research** — query = `[topic 中文] + [scenario] + "评估框架 最佳实践 制造业 AI" + 英文`。权威：PMBOK / Stage-Gate / DMAIC / WEF / McKinsey。
+**A · deep_research（必做）** — query 的目标是**"向用户提问所用的访谈/评估方法论"**（SIPOC / GQM / 5W1H / A3 / CRISP-DM Business Understanding / Bernard Marr AI Use Case Canvas / NIST AI RMF Map / Hoshin X-Matrix / AIAG FMEA / Prosci ADKAR / Kotter 8-step / McKinsey Rewired Diagnostic 等），**不是**"问题的领域知识答案"。用户此刻还没给出完整问题，我们要的是"**怎么问才能把信息问全**"的访谈工具，不是"问题怎么解决"的答案。
+
+query 构造：`[intake 目标中文] + "访谈框架 / 问卷设计 / 结构化评估协议" + [intake goal 英文] + "intake framework / interview protocol / structured questionnaire / assessment checklist" + 列举 2-3 个真实方法论名`
+
+权威来源：McKinsey Rewired / BCG AI at Scale / WEF Lighthouse / INCIT AIMRI / ISO 13053 / 55001 / AIAG-VDA FMEA / DAMA-DMBOK / NIST AI RMF / PMI PMBOK / PRINCE2 / Prosci ADKAR / Kotter / Basili GQM。
+
 **B · 合成 3-5 条洞察**。
 **C · 生成飞书** — 🟡/⚪ 两档；6:4；量化 ≥ 50%；每章节 ≤ 8 行；末尾「📌 填写说明」。
 **D · 调 `sunny_ai__feishu_create_doc`**（失败降级为贴 markdown）。
@@ -30,7 +35,7 @@ allowed-tools: deep_research WebFetch sunny_ai__feishu_create_doc Read Write
 差异参数：
 
 ```
-research_query: "manufacturing AI project four-stage execution plan 90-day quick win 6-month PoC 12-month scaling 24-month institutionalize milestones RACI PMBOK Stage-Gate"
+research_query: "AI 项目四阶段计划前置输入访谈框架 Agile Stage-Gate input interview PMBOK planning phase questionnaire WBS decomposition intake manufacturing AI milestone planning structured interview 约束与前置条件访谈"
 topic: "工厂 AI 项目四阶段行动计划 · 输入汇总"
 scenario: [用户已获得的调优方法论 + 推荐算法]
 industry: [用户行业]
