@@ -19,7 +19,7 @@ initiate（总入口路由）
    └─ Step 4    iteration              季度持续迭代更新
 ```
 
-辅助支持技能：`research-template`（飞书文档模板生成）、`feishu-guide`（飞书写作规范）、`methodology`（方法论知识库）。
+辅助支持技能：`feishu-guide`（飞书写作规范）、`methodology`（方法论知识库）。
 
 ---
 
@@ -60,8 +60,6 @@ initiate（总入口路由）
 ### iteration/
 **Step 4 · 季度持续迭代更新。** 收集季度行动完成情况、KPI 当前值与新增资料，重新评定六维准备度，更新行动计划优先级，识别新解锁的 AI 方法。遵循 PDCA + 文档飞轮加速机制。
 
-### research-template/
-**辅助技能 · 飞书文档模板生成器。** 由其他技能调用（非用户直接触发），为复杂分析问题动态搜索行业方法论，生成模板并通过 `sunny_ai__feishu_create_doc` MCP 直接创建飞书文档，返回链接。
 
 ### feishu-guide/
 **辅助知识 · 飞书云文档写作规范。** 文档命名规则、文档飞轮理念等参考知识。AI 在指导用户写飞书文档时自动调用，不对用户直接暴露。
@@ -72,7 +70,7 @@ initiate（总入口路由）
 
 - **首次立项流程**：`initiate` → `scene-discovery` 或 `scene-prediagnosis` → `goal-definition` → `readiness-collection` → `readiness-diagnosis` → `methodology` → `action-plan` → `project-charter` → `execution`
 - **季度复盘流程**：`iteration` 触发，重跑诊断与计划更新
-- **贯穿全流程**：`research-template` 负责创建飞书模板，`feishu-guide` 提供写作规范
+- **贯穿全流程**：`feishu-guide` 提供写作规范
 
 ## 文件约定
 

@@ -14,7 +14,7 @@ allowed-tools: deep_research WebFetch sunny_ai__feishu_create_doc Read Write
 
 ## 🧭 内联问卷生成协议（本 skill 通用执行块）
 
-本 skill 所有"问卷式输入点"**直接内联**调用 `deep_research` + `sunny_ai__feishu_create_doc`。
+本 skill 所有"问卷式输入点"**直接内联**调用 `deep_research`（深度研究）+ 飞书 MCP `sunny_ai__feishu_create_doc`（创建飞书云文档）。
 
 **A · deep_research（必做）** — query 的目标是**"向用户提问所用的访谈/评估方法论"**（SIPOC / GQM / 5W1H / A3 / CRISP-DM Business Understanding / Bernard Marr AI Use Case Canvas / NIST AI RMF Map / Hoshin X-Matrix / AIAG FMEA / Prosci ADKAR / Kotter 8-step / McKinsey Rewired Diagnostic 等），**不是**"问题的领域知识答案"。用户此刻还没给出完整问题，我们要的是"**怎么问才能把信息问全**"的访谈工具，不是"问题怎么解决"的答案。
 
@@ -24,30 +24,51 @@ query 构造：`[intake 目标中文] + "访谈框架 / 问卷设计 / 结构化
 
 **B · 合成 3-5 条洞察**。
 **C · 生成飞书** — 🟡/⚪ 两档；6:4；量化 ≥ 50%；每章节 ≤ 8 行；末尾「📌 填写说明」。
-**D · 调 `sunny_ai__feishu_create_doc`**（失败降级为贴 markdown）。
+**D · 调用飞书 MCP `sunny_ai__feishu_create_doc`（创建飞书云文档）**（失败降级为贴 markdown）。
 **E · 回用户**：方法论来源 + 链接 + 填写要点 3 条。
 **F · 等贴回** → 解析 → 追问 🟡 缺失 → 低置信度继续。
 
 ---
 
-## 第一步：行动计划输入汇总——执行内联问卷生成协议
+## 第一步：行动计划输入整合
+
+### 1a. AI 自动整合（不需要用户操作）
+
+从当前对话上下文中提取以下已有信息，预填到行动计划输入：
+
+- **方法论摘要**：从 methodology 输出中提取推荐算法 / 数据需求 / 预期改善 / 5M1E 步骤
+- **六维评级与瓶颈**：从 readiness-diagnosis 输出中提取各维度评级和关键瓶颈
+- **目标 KPI 与约束**：从 goal-definition 输出中提取目标值 / 时间约束 / 雄心度
+
+AI 将上述信息自动填入，并在每项后标注「🤖 已自动填充 — 如有错误请修正」。
+
+### 1b. 用户补充增量信息——执行内联问卷生成协议
+
+只让用户填写 AI 无法自动获取的新增信息。
 
 差异参数：
 
 ```
 research_query: "AI 项目四阶段计划前置输入访谈框架 Agile Stage-Gate input interview PMBOK planning phase questionnaire WBS decomposition intake manufacturing AI milestone planning structured interview 约束与前置条件访谈"
-topic: "工厂 AI 项目四阶段行动计划 · 输入汇总"
+topic: "工厂 AI 项目四阶段行动计划 · 增量补充"
 scenario: [用户已获得的调优方法论 + 推荐算法]
 industry: [用户行业]
-doc_name: "[厂区代码]-[项目简称]-行动计划输入-[YYYYMMDD]"
-purpose: "整合方法论摘要、约束、时间节点、前置完成度，为四阶段行动计划提供输入"
+doc_name: "[厂区代码]-[项目简称]-行动计划补充-[YYYYMMDD]"
+purpose: "在 AI 自动整合方法论和诊断结果的基础上，补充团队就位状态、管理层期望节奏和前置完成度"
 ```
 
-**问卷章节建议**：方法论摘要（推荐算法/数据需求/预期改善，🟡 3 字段）/ 关键约束（预算/人力/硬时间节点，🟡）/ 前置完成状态（数据地图/GR&R/设备接口，🟡 3 行）/ 团队已就位角色（🟡 PE/AIE/ITE 是否到位）/ 管理层期望节奏（⚪，如"6 月前看成效"）/ 关联项目（⚪）。
+**问卷章节建议**（仅用户增量部分）：
+- 前置完成状态（数据地图/GR&R/设备接口是否已做，🟡 3 行）
+- 团队已就位角色（🟡，PE/AIE/ITE 各角色是否到位 + 预计到岗时间）
+- 管理层期望节奏（🟡，如"6 月前看成效"/ 硬时间节点）
+- 预算约束（🟡，可投入总额 / 各阶段分配偏好）
+- 关联项目（⚪，是否有其他改善项目同步进行）
+- 自动填充内容修正（⚪；如有数据变化或错误）
 
 话术：
 
-> 行动计划输入。把 Step 2 方法论摘要、约束、时间节点、前置完成状态填进去。
+> 我已从前序步骤自动整合了方法论、六维评级和目标 KPI。
+> 请检查预填内容是否准确，然后补充"团队就位状态"和"管理层期望节奏"即可。
 > 完成后我生成 90 天 / 6 月 / 12 月 / 24 月详细行动清单。
 
 ---
@@ -140,4 +161,4 @@ DMAIC：Control + 新 DMAIC 周期
 继续？
 ```
 
-用户确认 → Read `project-charter/SKILL.md` 执行，传入行动计划作为上下文。
+用户确认 → **立即** Read `sunny-ai-project/skills/project-charter/SKILL.md` 并按其中指令执行，传入行动计划作为上下文，不要等用户再次确认。

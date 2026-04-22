@@ -14,7 +14,7 @@ allowed-tools: deep_research WebFetch sunny_ai__feishu_create_doc Read Write
 
 ## 🧭 内联问卷生成协议（本 skill 通用执行块）
 
-本 skill 所有"问卷式输入点"**直接内联**调用 `deep_research` + `sunny_ai__feishu_create_doc`，**不经 research-template**。
+本 skill 所有"问卷式输入点"**直接内联**调用 `deep_research`（深度研究）+ 飞书 MCP `sunny_ai__feishu_create_doc`（创建飞书云文档）。
 
 **A · deep_research（必做）** — query 的目标是**"向用户提问所用的访谈/评估方法论"**（SIPOC / GQM / 5W1H / A3 / CRISP-DM Business Understanding / Bernard Marr AI Use Case Canvas / NIST AI RMF Map / Hoshin X-Matrix / AIAG FMEA / Prosci ADKAR / Kotter 8-step / McKinsey Rewired Diagnostic 等），**不是**"问题的领域知识答案"。用户此刻还没给出完整问题，我们要的是"**怎么问才能把信息问全**"的访谈工具，不是"问题怎么解决"的答案。
 
@@ -24,37 +24,51 @@ query 构造：`[intake 目标中文] + "访谈框架 / 问卷设计 / 结构化
 
 **B · 合成 3-5 条洞察**（维度/指标/信息价值/模板特征）。
 **C · 生成飞书内容** — 🟡 推荐填 / ⚪ 选填两档；6:4 比例；量化 ≥ 50%；每章节 ≤ 8 行；末尾加「📌 填写说明」。
-**D · 调 `sunny_ai__feishu_create_doc`**（title = doc_name，content = markdown）；失败降级为贴 markdown。
+**D · 调用飞书 MCP `sunny_ai__feishu_create_doc`（创建飞书云文档）**（title = doc_name，content = markdown）；失败降级为贴 markdown。
 **E · 回用户**：方法论来源（2-3 行）+ 飞书链接 + 填写要点 3 条。
 **F · 等贴回**：解析 → 追问缺失 🟡 → 低置信度继续。
 
 ---
 
-## 第一步：诊断输入整合——执行内联问卷生成协议
+## 第一步：诊断输入整合
 
-在正式输出诊断前，先让用户整合一份"诊断输入清单"飞书文档。
+在正式输出诊断前，AI 先自动整合前序 skill 的输出，再让用户补充增量信息。
+
+### 1a. AI 自动整合（不需要用户操作）
+
+从当前对话上下文中提取以下已有信息，预填到诊断输入文档：
+
+- **阶段 1 KPI 矩阵**：从 goal-definition 输出中提取主 KPI/基线/目标/雄心度/OKR 信心
+- **六维飞书文档链接**：从 scene-prediagnosis 六维收集中提取已创建的 6 份飞书链接
+- **六维关键数据摘要**：从六维收集的用户填写回传中提取每维度 2-3 个关键数据点
+
+AI 将上述信息自动填入文档，并在每项后标注「🤖 已自动填充 — 如有错误请修正」。
+
+### 1b. 用户补充增量信息——执行内联问卷生成协议
+
+只让用户填写 AI 无法自动获取的新增信息。
 
 差异参数：
 
 ```
 research_query: "AI 准备度诊断输入汇总访谈框架 六维综合档案整合问卷 McKinsey Rewired diagnostic protocol INCIT AIMRI assessment interview BCG AI at Scale diagnostic questionnaire manufacturing AI readiness intake aggregation interview"
-topic: "工厂 AI 项目六维准备度诊断 · 输入清单"
+topic: "工厂 AI 项目六维准备度诊断 · 增量补充"
 scenario: [用户已完成的目标定义 + 六维资料收集飞书链接]
 industry: [用户行业]
 doc_name: "[厂区代码]-[项目简称]-准备度诊断输入-[YYYYMMDD]"
-purpose: "整合目标定义、六维资料链接和基线数据，为 AI 诊断提供完整上下文"
+purpose: "在 AI 自动整合的基础上，补充完整度自评、关切维度和近期变化"
 ```
 
-**问卷章节建议**：
-- 阶段 1 KPI 矩阵摘要（🟡；主 KPI/基线/目标/雄心度/OKR 信心）
-- 六维飞书文档链接（🟡 6 行全填；缺哪维标"待补"）
-- 各维信息完整度自评（🟡 高/中/低）
-- 最担心的 2-3 个维度（🟡）
+**问卷章节建议**（仅用户增量部分）：
+- 各维信息完整度自评（🟡 高/中/低 × 6 维）
+- 最担心的 2-3 个维度及原因（🟡）
+- 自动填充内容修正（⚪；如有数据变化或错误）
 - 补充上下文：近 3 月异常事件（⚪）/ 其他改善项目关联（⚪）
 
 话术：
 
-> 诊断前先整合输入。把阶段 1 的 KPI 摘要 + 六维飞书链接 + 基线数据填进这份文档。
+> 我已从前序步骤自动整合了 KPI 矩阵和六维资料。请检查下方预填内容是否准确，
+> 然后补充"完整度自评"和"最担心的维度"即可。
 > 完成后粘贴链接，我会逐一审阅六维文档，生成完整诊断报告。
 
 ---
@@ -76,6 +90,23 @@ purpose: "整合目标定义、六维资料链接和基线数据，为 AI 诊断
 ```
 
 评级标准见 [references/scoring-criteria.md](references/scoring-criteria.md)。
+
+<details><summary>📐 评级速查（完整标准见上方链接）</summary>
+
+| 维度 | 1级 | 3级（最低启动线） | 5级 |
+|---|---|---|---|
+| ①战略价值度 | 无量化/无Owner/无ROI | 量化清楚+有实权Owner+ROI合理 | 纳入OKR+系统追踪+可对外发布 |
+| ②数据准备度 | D1-D6多数1-2级 | D1-D6均≥3级且无<2级 → **可启动PoC** | D1-D6全≥4级，D3/D6达5级 |
+| ③技术互联度 | 无数字接口/纯手抄 | OPC-UA/MQTT标准接口+MES有数据+延迟<1h | 全程数字主线+实时数据湖 |
+| ④工艺可控度 | 参数未识别/无GR&R | GR&R 10-30%+参数调整窗口 | 实时SPC+AI闭环调参 |
+| ⑤组织能力度 | 无AI能力/知识口传 | 有AIE（或外包）+工艺文档+IT配合 | 内部AI CoE+完全融合 |
+| ⑥管理变革度 | 明确抵制/审批>1月 | 关键班长支持+审批<1周+有成功历史 | AI推荐=标准操作+精益文化 |
+
+综合3级 = **最低启动线**（可开始小范围PoC）；综合<2.5且改善>15% → 触发目标校准。
+
+数据准备度关键子维度：D1质量(GR&R) / D2追溯(X-Y关联率) / D3数据量 / D4标注 / D5漂移 / D6治理。
+
+</details>
 
 ### 【诊断结论】
 
@@ -201,7 +232,7 @@ WEF Lighthouse / 同行业案例支撑：
 继续？（"是"/"继续"即可）
 ```
 
-用户确认 → Read `methodology/SKILL.md` 执行，传入诊断输出（六维评级 / 优先瓶颈 / 目标校准）作为上下文。
+用户确认 → **立即** Read `sunny-ai-project/skills/methodology/SKILL.md` 并按其中指令执行，传入诊断输出（六维评级 / 优先瓶颈 / 目标校准）作为上下文，不要等用户再次确认。
 
 ---
 

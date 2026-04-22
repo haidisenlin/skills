@@ -1,6 +1,6 @@
 {
   "name": "sunny-ai-project",
-  "description": "工厂管理 AI 辅助改善 · 全流程立项助手。覆盖场景发现、目标定义、六维准备度评估、AI诊断、方法论生成、行动计划、正式立项文档生成与项目执行管理全链路。基于 McKinsey Rewired、BCG AI Manufacturing、WEF Lighthouse Factory、INCIT AIMRI、Six Sigma DMAIC、TPM/TQM 等权威方法论。",
+  "description": "AI 场景发现 · 立项助手。覆盖场景发现、目标定义、六维准备度评估、AI诊断、方法论生成、行动计划、正式立项文档生成与项目执行管理全链路。基于 McKinsey Rewired、BCG AI Manufacturing、WEF Lighthouse Factory、INCIT AIMRI、Six Sigma DMAIC、TPM/TQM 等权威方法论。",
   "version": "1.0.0",
   "author": {
     "name": "Sunny Optical",

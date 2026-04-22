@@ -51,7 +51,7 @@ metadata:
 
 ## AI 自动生成的飞书文档规范（各 skill 内联创建时必遵）
 
-各 skill 的 SKILL.md 已定义「内联问卷生成协议」，由 skill 直接调 `deep_research` + `sunny_ai__feishu_create_doc` MCP 创建飞书问卷文档。生成文档时必须满足：
+各 skill 的 SKILL.md 已定义「内联问卷生成协议」，由 skill 直接调用 `deep_research`（深度研究）+ 飞书 MCP `sunny_ai__feishu_create_doc`（创建飞书云文档）创建飞书问卷文档。生成文档时必须满足：
 
 | 规范项 | 要求 |
 |---|---|
@@ -90,4 +90,4 @@ metadata:
 5. GR&R 报告、SPC 图等**直接拖入**
 6. 写完把链接粘贴回对话
 
-> 💡 **多数情况下无需用户手动新建文档**——各 skill 内联协议会自动调 `sunny_ai__feishu_create_doc` 生成带模板的问卷飞书文档给用户填。
+> 💡 **多数情况下无需用户手动新建文档**——各 skill 内联协议会自动调用飞书 MCP `sunny_ai__feishu_create_doc`（创建飞书云文档）生成带模板的问卷飞书文档给用户填。

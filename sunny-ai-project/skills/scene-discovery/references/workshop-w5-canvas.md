@@ -2,12 +2,12 @@
 
 **时长**：约 10 分钟
 **框架来源**：**Bernard Marr《Data Strategy》AI Use Case Template**——全球数据战略领域最常用的 1 页 AI 立项画布
-**交互模式**：**问卷式** —— 按 `SKILL.md` 顶部「🧭 内联问卷生成协议」执行（内联 `deep_research` + `sunny_ai__feishu_create_doc`），用户填好贴回来
+**交互模式**：**问卷式** —— 按 `SKILL.md` 顶部「🧭 内联问卷生成协议」执行（内联 `deep_research`（深度研究）+ 飞书 MCP `sunny_ai__feishu_create_doc`（创建飞书云文档）），用户填好贴回来
 **触发时机**：`references/scenario-map-output.md` 的 Step B-4 输出推荐场景之后、衔接 scene-prediagnosis 之前
 
 ## 步骤 1：生成 Canvas 问卷 飞书问卷（内联协议）
 
-⚡ **执行内联问卷生成协议**（见 `SKILL.md` 顶部「🧭 内联问卷生成协议」）。差异参数如下，执行完必须调用 `sunny_ai__feishu_create_doc` 并把返回链接发给用户：
+⚡ **执行内联问卷生成协议**（见 `SKILL.md` 顶部「🧭 内联问卷生成协议」）。差异参数如下，执行完必须调用飞书 MCP `sunny_ai__feishu_create_doc`（创建飞书云文档）并把返回链接发给用户：
 
 ```
 topic: "Bernard Marr AI Use Case Canvas 标准结构（决策替代 / 数据现状 / 价值假设 / 风险担忧）+ 30 秒电梯演讲脚本模板"
@@ -22,7 +22,7 @@ purpose: "把选定的 AI 场景包装成可以向 Sponsor 提案的 1 页 AI Us
 - 章节 2：向 Sponsor 提案所需补充（希望申请的预算 / 资源 / PoC 时间窗）→ 🟡 推荐填
 - 章节 3：风险缓解初步方案 → ⚪ 选填（AI 会在后续输出里自动补建议）
 
-## 步骤 2：将 `sunny_ai__feishu_create_doc` 返回的飞书文档链接发给用户
+## 步骤 2：将飞书 MCP `sunny_ai__feishu_create_doc` 返回的飞书文档链接发给用户
 
 前面加以下引导语：
 
@@ -49,7 +49,7 @@ purpose: "把选定的 AI 场景包装成可以向 Sponsor 提案的 1 页 AI Us
 
 ```
 ━━━ 飞书文档 ━━━
-{sunny_ai__feishu_create_doc 返回的文档链接}
+{飞书 MCP sunny_ai__feishu_create_doc 返回的文档链接}
 
 📌 Canvas Q3 是核心——请用数字表达价值，不要写"提升效率"。
   ✅ 好例："节奏从 3 秒/张降到 0.3 秒"

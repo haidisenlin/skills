@@ -14,7 +14,7 @@ allowed-tools: deep_research WebFetch sunny_ai__feishu_create_doc Read Write
 
 ## 🧭 内联问卷生成协议（本 skill 通用执行块）
 
-本 skill 所有"问卷式输入点"**直接内联**调用 `deep_research` + `sunny_ai__feishu_create_doc`，**不经 research-template**。每个输入点只给差异参数，其余按本协议执行。
+本 skill 所有"问卷式输入点"**直接内联**调用 `deep_research`（深度研究）+ 飞书 MCP `sunny_ai__feishu_create_doc`（创建飞书云文档）。每个输入点只给差异参数，其余按本协议执行。
 
 **步骤 A · deep_research（必做）** — 按输入点的 `research_query` 执行一次。
 
@@ -32,7 +32,7 @@ query 构造：`[intake 目标中文] + "访谈框架 / 问卷设计 / 结构化
 - 每字段括号内给格式/范围/单位/示例，每章节 1-2 行 *斜体示例*
 - 末尾加「📌 填写说明」章节解释 🟡 和 ⚪
 
-**步骤 D · 调用 `sunny_ai__feishu_create_doc`**：
+**步骤 D · 调用飞书 MCP `sunny_ai__feishu_create_doc`（创建飞书云文档）**：
 ```
 title: [doc_name，按 "[厂区]-[项目简称]-[内容]-[YYYYMMDD]"]
 content: [步骤 C 的 markdown 全文]
@@ -212,6 +212,6 @@ purpose: "为后续 AI 诊断和方案设计提供项目背景与约束上下文
 (3) 等一下，先手动准备
 ```
 
-- 选 1 → Read `readiness-collection/SKILL.md` 并执行
-- 选 2 → Read `readiness-diagnosis/SKILL.md` 并执行
+- 选 1 → **立即** Read `sunny-ai-project/skills/readiness-collection/SKILL.md` 并按其中指令执行，不要等用户再次确认
+- 选 2 → **立即** Read `sunny-ai-project/skills/readiness-diagnosis/SKILL.md` 并按其中指令执行，不要等用户再次确认
 - 选 3 → 告知命令 `/sunny-ai-project:readiness-collection` / `readiness-diagnosis`

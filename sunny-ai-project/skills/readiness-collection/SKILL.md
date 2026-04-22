@@ -18,7 +18,7 @@ allowed-tools: deep_research WebFetch sunny_ai__feishu_create_doc Read Write
 
 ## 🧭 内联问卷生成协议（本 skill 通用执行块）
 
-本 skill 所有"问卷式输入点"**直接内联**调用 `deep_research` + `sunny_ai__feishu_create_doc`——**AI 主动为每维生成模板飞书文档**给用户填，而非让用户自己新建空文档。
+本 skill 所有"问卷式输入点"**直接内联**调用 `deep_research`（深度研究）+ 飞书 MCP `sunny_ai__feishu_create_doc`（创建飞书云文档）——**AI 主动为每维生成模板飞书文档**给用户填，而非让用户自己新建空文档。
 
 **A · deep_research（必做）** — query 的目标是**"向用户提问所用的访谈/评估方法论"**（SIPOC / GQM / 5W1H / A3 / CRISP-DM Business Understanding / Bernard Marr AI Use Case Canvas / NIST AI RMF Map / Hoshin X-Matrix / AIAG FMEA / Prosci ADKAR / Kotter 8-step / McKinsey Rewired Diagnostic 等），**不是**"问题的领域知识答案"。用户此刻还没给出完整问题，我们要的是"**怎么问才能把信息问全**"的访谈工具，不是"问题怎么解决"的答案。
 
@@ -28,7 +28,7 @@ query 构造：`[intake 目标中文] + "访谈框架 / 问卷设计 / 结构化
 
 **B · 合成 3-5 条洞察**。
 **C · 生成飞书** — 🟡/⚪；6:4；量化 ≥ 50%；每章节 ≤ 8 行；**必含评级判据表**（1-5 级）；末尾「📌 填写说明」。
-**D · 调 `sunny_ai__feishu_create_doc`**（失败降级为贴 markdown）。
+**D · 调用飞书 MCP `sunny_ai__feishu_create_doc`（创建飞书云文档）**（失败降级为贴 markdown）。
 **E · 回用户**：来源 + 链接 + 要点 3 条（本维要点、截图优先、估算请标注）。
 **F · 等贴回** → 解析 → 追问缺失 🟡 → 低置信度继续。
 
@@ -248,5 +248,5 @@ purpose: "评估管理成熟度和变革意愿，识别组织阻力"
 (2) 还需时间，稍后再来
 ```
 
-- 选 1 / 直接贴资料 → Read `readiness-diagnosis/SKILL.md` 执行
+- 选 1 / 直接贴资料 → **立即** Read `sunny-ai-project/skills/readiness-diagnosis/SKILL.md` 并按其中指令执行，不要等用户再次确认
 - 选 2 → 告知命令 `/sunny-ai-project:readiness-diagnosis`

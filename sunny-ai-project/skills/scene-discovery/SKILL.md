@@ -13,7 +13,7 @@ allowed-tools: deep_research WebFetch sunny_ai__feishu_create_doc sunny_ai__feis
 
 ## 🧭 内联问卷生成协议（本 skill 通用执行块）
 
-本 skill 所有"问卷式模块"（W1/W2/W4/W5 + 3 轮深度收集）**直接内联**调用 `deep_research` + `sunny_ai__feishu_create_doc`，**不经 research-template**。各 reference 文件只提供差异参数，其余按本协议执行。
+本 skill 所有"问卷式模块"（W1/W2/W4/W5 + 3 轮深度收集）**直接内联**调用 `deep_research`（深度研究）+ 飞书 MCP `sunny_ai__feishu_create_doc`（创建飞书云文档）。各 reference 文件只提供差异参数，其余按本协议执行。
 
 **A · deep_research（必做）** — query 的目标是**"向用户提问所用的访谈/评估方法论"**（SIPOC / GQM / 5W1H / A3 / CRISP-DM Business Understanding / Bernard Marr AI Use Case Canvas / NIST AI RMF Map / Hoshin X-Matrix / AIAG FMEA / Prosci ADKAR / Kotter 8-step / McKinsey Rewired Diagnostic 等），**不是**"问题的领域知识答案"。用户此刻还没给出完整问题，我们要的是"**怎么问才能把信息问全**"的访谈工具，不是"问题怎么解决"的答案。
 
@@ -23,7 +23,7 @@ query 构造：`[intake 目标中文] + "访谈框架 / 问卷设计 / 结构化
 
 **B · 合成 3-5 条洞察**（标准维度 / 关键指标 / 信息价值 / 行业模板特征）。
 **C · 生成飞书内容** — 🟡 推荐填 / ⚪ 选填两档；**无必填**（现场 workshop 时间紧，缺项标低置信度继续）；推荐填:选填 ≈ 6:4；量化 ≥ 50%；每章节 ≤ 8 行；末尾「📌 填写说明」。
-**D · 调 `sunny_ai__feishu_create_doc`** — title = 差异参数里的 doc_name，content = markdown 全文；失败降级为贴 markdown。
+**D · 调用飞书 MCP `sunny_ai__feishu_create_doc`（创建飞书云文档）** — title = 差异参数里的 doc_name，content = markdown 全文；失败降级为贴 markdown。
 **E · 回用户话术** — 方法论来源（2-3 行）+ 飞书链接 + 本模块填写要点 3 条。
 **F · 等贴回** — 用 `sunny_ai__feishu_get_doc` 解析链接，或用户直接粘贴内容；对缺失 🟡 字段做 1 轮追问（不阻塞）。
 
@@ -46,7 +46,7 @@ query 构造：`[intake 目标中文] + "访谈框架 / 问卷设计 / 结构化
 
 ### 阶段 3：Workshop 5 互动模块（AI 主导，约 40 分钟）
 
-> **交互模式混合**：W1/W2/W4/W5 是**问卷式**（按顶部「内联问卷生成协议」，reference 提供 `research_query` 等差异参数，直接调 `deep_research` + `sunny_ai__feishu_create_doc`）；W3 是**对话式**（追问挖根因，这是精华，不改）
+> **交互模式混合**：W1/W2/W4/W5 是**问卷式**（按顶部「内联问卷生成协议」，reference 提供 `research_query` 等差异参数，直接调 `deep_research`（深度研究）+ 飞书 MCP `sunny_ai__feishu_create_doc`（创建飞书云文档））；W3 是**对话式**（追问挖根因，这是精华，不改）
 >
 > 通用运行原则：
 > - 问卷式模块：用户填完飞书贴回后，AI 复述理解 + 对模糊/缺失字段追问

@@ -5,7 +5,7 @@
 
 ## 必须执行内联问卷生成协议 技能
 
-按「🧭 内联问卷生成协议」（见 `SKILL.md` 顶部）执行；差异参数如下，完成后必须调用 `sunny_ai__feishu_create_doc`：
+按「🧭 内联问卷生成协议」（见 `SKILL.md` 顶部）执行；差异参数如下，完成后必须调用飞书 MCP `sunny_ai__feishu_create_doc`（创建飞书云文档）：
 
 ```
 topic: "工厂AI项目数据可行性快速评估（CRISP-DM业务理解与数据理解阶段）"
