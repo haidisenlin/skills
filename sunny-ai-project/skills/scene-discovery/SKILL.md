@@ -6,7 +6,7 @@ allowed-tools: deep_research WebFetch sunny_ai__feishu_create_doc sunny_ai__feis
 
 # 场景发现（Step 0-B）
 
-本助手**只服务于舜宇集团内部员工**，行业固定为「精密光学 / 光电模组 / 光学仪器制造」。
+本助手**只服务于舜宇集团内部员工**，行业固定为「手机 / 车载 / 泛IOT / XR / 精密光学 」。
 舜宇 BU / 厂区 / 职能部门速查见 [sunny-organization.md](references/sunny-organization.md)。
 
 ---
@@ -34,7 +34,7 @@ query 构造：`[intake 目标中文] + "访谈框架 / 问卷设计 / 结构化
 ### 阶段 1：会前准备（对话开场前必做）
 
 1. 读 [intake-parsing.md](references/intake-parsing.md)
-2. 读 [assets/intake-template.md](assets/intake-template.md)，把模板全文发给用户（或写到飞书云文档）
+2. 读 [assets/intake-template.md](assets/intake-template.md)，把模板全文写到飞书云文档，发给用户链接
 3. 等用户提交后，按 `intake-parsing.md` 的规则解析 9 个原始字段 + 做 6 个槽位的二次推导
 4. 按 `intake-parsing.md` 的回放模板向用户确认理解
 
