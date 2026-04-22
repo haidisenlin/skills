@@ -184,7 +184,7 @@ sunny-ai-project/
 
 **执行流程**：
 1. 发送会前准备清单（系统清单 / 产线布局 / 损失数据等）
-2. 开场 2 问（行业 + 最大痛点）
+2. 开场问答（行业 + 最大痛点）
 3. 4 个 AI 主导的 Workshop 互动模块（SIPOC / GQM / 痛点深挖 / 利益相关方对齐）
 4. 3 轮深度信息收集
 5. 输出 AI 场景机会地图 + Top 3 推荐 + Bernard Marr AI Use Case Canvas
