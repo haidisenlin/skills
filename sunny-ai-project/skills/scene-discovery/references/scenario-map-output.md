@@ -58,4 +58,4 @@
 
 ## 输出 Step B-4 后
 
-进入 `references/workshop-w5-canvas.md`（Bernard Marr Canvas 把推荐场景包装成 30 秒电梯演讲）。
+输出完成后，**立即**读 [workshop-w5-canvas.md](workshop-w5-canvas.md) 并按其中指令执行（Bernard Marr Canvas 把推荐场景包装成 30 秒电梯演讲），不要等用户再次选择技能。

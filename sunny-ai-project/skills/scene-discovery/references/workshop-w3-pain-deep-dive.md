@@ -90,4 +90,4 @@ AI 才能解决】的具体卡点。
 对吗？修正后我们进入第 4 个模块（也是最后一个 workshop 互动模块）。
 ```
 
-进入 `references/workshop-w4-stakeholder.md`。
+完成后，**立即**读 [workshop-w4-stakeholder.md](workshop-w4-stakeholder.md) 并按其中指令执行，不要等用户再次选择技能。

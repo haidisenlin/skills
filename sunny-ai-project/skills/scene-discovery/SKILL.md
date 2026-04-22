@@ -35,14 +35,18 @@ query 构造：`[intake 目标中文] + "访谈框架 / 问卷设计 / 结构化
 
 1. 读 [intake-parsing.md](references/intake-parsing.md)
 2. 读 [assets/intake-template.md](assets/intake-template.md)，把模板全文写到飞书云文档，发给用户链接
-3. 等用户提交后，按 `intake-parsing.md` 的规则解析 9 个原始字段 + 做 6 个槽位的二次推导
+3. 等用户提交后，按 `intake-parsing.md` 的规则解析 11 个原始字段 + 做 7 个槽位的二次推导
 4. 按 `intake-parsing.md` 的回放模板向用户确认理解
+5. 用户确认（或修正）后，**立即** Read `sunny-ai-project/skills/scene-discovery/SKILL.md` 继续执行阶段 2，不要等用户再次选择技能
 
-### 阶段 2：开场 2 问（目标 60 秒答完）
+### 阶段 2：开场问答（严格串行，每步必须等用户回复）
 
-5. 读 [opening-q1-sponsorship.md](references/opening-q1-sponsorship.md)，问 Q1（项目授权类型）
-6. Q1 答完**立即**读 [deep-research-playbook.md](references/deep-research-playbook.md)，静默做一次定向深度研究
-7. 研究完成后，读 [opening-q2-direction.md](references/opening-q2-direction.md)，用研究结果动态生成 Q2（个性化改善方向）
+> ⛔ **严禁合并输出**：Q1 和 Q2 是两个独立的对话回合，中间隔着一次 `deep_research` 调用。
+> 绝对不允许在同一条消息里同时输出 Q1 和 Q2。
+
+5. 读 [opening-q1-sponsorship.md](references/opening-q1-sponsorship.md)，**只问 Q1**（项目授权类型）。输出 Q1 后 **停止，等待用户回复**。
+6. 收到用户对 Q1 的回复后，**立即**读 [deep-research-playbook.md](references/deep-research-playbook.md) 并按其中指令执行定向深度研究（调用 `deep_research`，耗时 30-90 秒）。研究完成后再读 [opening-q2-direction.md](references/opening-q2-direction.md)，用研究结果动态生成 Q2。
+   - ⚠️ **Q2 的内容由 deep_research 的结果决定**，所以此处不提前描述 Q2——必须先完成研究才能生成。
 
 ### 阶段 3：Workshop 5 互动模块（AI 主导，约 40 分钟）
 

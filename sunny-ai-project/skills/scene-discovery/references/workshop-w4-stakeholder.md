@@ -85,4 +85,4 @@ Decision Process），为你定制了一份利益相关方识别问卷。
 准备好了说"开始"，我们进入第 1 轮。
 ```
 
-## 确认完进入 `references/deep-dive-round1-pain.md`
+用户说"开始"后，**立即**读 [deep-dive-round1-pain.md](deep-dive-round1-pain.md) 并按其中指令执行，不要等用户再次选择技能。

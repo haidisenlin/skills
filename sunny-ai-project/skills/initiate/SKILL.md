@@ -186,6 +186,7 @@ metadata:
 - 描述了痛点但不知道做什么AI → `scene-discovery`
 - 已有目标场景 → `scene-prediagnosis`
 - 说"帮我规划"、"都要做"、"全流程" → `scene-discovery`（从发现阶段开始）
+- **用户粘贴了包含"个人定位""方针目标""核心KPI""部门预算"等字段的内容**（即 scene-discovery 的 intake 准备材料回传） → `scene-discovery`，告知用户"检测到你的场景发现准备材料，继续解析"，然后 Read SKILL.md 并从 intake-parsing 的 Step 3 开始执行
 
 ---
 

@@ -104,4 +104,4 @@ purpose: "把选定的 AI 场景包装成可以向 Sponsor 提案的 1 页 AI Us
 基于你的场景生成定制化的六维资料收集清单。要继续吗？
 ```
 
-## 进入 `references/handoff-prediagnosis.md`
+完成后，**立即**读 [handoff-prediagnosis.md](handoff-prediagnosis.md) 并按其中指令执行，衔接 scene-prediagnosis 技能，不要等用户再次选择技能。

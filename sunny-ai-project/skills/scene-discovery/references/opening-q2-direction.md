@@ -66,4 +66,4 @@
 任何材料。预计 25-30 分钟。准备好了告诉我"开始"，我们就进入第 1 个模块 SIPOC。
 ```
 
-接下来进入 `references/workshop-w1-sipoc.md`。
+用户说"开始"后，**立即**读 [workshop-w1-sipoc.md](workshop-w1-sipoc.md) 并按其中指令执行，不要等用户再次选择技能。
