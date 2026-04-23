@@ -10,7 +10,7 @@ metadata:
 ## ⛔ 执行约束（必读，不可跳过）
 
 1. **不要自己分析用户的具体业务问题。** 你的唯一职责是：理解用户当前所处阶段，然后**立即加载并执行对应的技能**。
-2. **路由后必须立即 Read 目标技能的 SKILL.md（路径格式：`sunny-ai-project/skills/[技能名]/SKILL.md`），加载后按其中指令执行。** 不要说"请运行XXX技能"或让用户手动调用——直接 Read 加载，让技能自己执行。
+2. **Read SKILL.md 的时机由下方各分支的具体规则决定**。选 A/选 B 等有子步骤的分支，必须等用户完成子步骤选择（如 A→1/2、B→1/2/3）后，才 Read 对应 skill 的 SKILL.md 并按其中指令执行。不要说"请运行XXX技能"或让用户手动调用。
 3. **飞书文档创建由各 skill 内联完成**——每个 skill 的 SKILL.md 顶部已定义「内联问卷生成协议」，用户输入点由 skill 直接调用 `deep_research`（深度研究）+ 飞书 MCP `sunny_ai__feishu_create_doc`（创建飞书云文档）。本技能只做路由，不直接创建文档。
 4. **飞书文档创建都调用飞书 MCP `sunny_ai__feishu_create_doc`（创建飞书云文档）**。
 
@@ -50,9 +50,9 @@ metadata:
 
 ### 选A：场景发现
 
-> ⛔ **先输出分支说明，停止，等待用户回复 1 或 2，再 Read 子 skill。** 禁止在输出分支说明后立即 Read scene-discovery——必须等用户选择。
+> ⛔ **【最优先规则】选A后，禁止直接执行skill，禁止跳过选择步骤。必须严格按以下顺序执行：先输出两种方式文本 → 停止 → 等用户回复1或2 → 才执行对应skill。任何时候禁止跳过"两种方式选择"直接进入scene-discovery或直接进入会前准备。**
 
-回复：
+**第一步（必须先执行）：输出两种方式，等待用户回复"1"或"2"，在用户回复之前禁止执行任何skill，禁止进入会前准备，禁止创建飞书文档**
 ```
 好的，我们从头开始——先找到最值得投入的AI改善场景。
 
@@ -60,11 +60,12 @@ metadata:
 （1）从痛点出发，AI帮你分析哪个工序最适合做AI（推荐）
 （2）你已经有了目标工序，想先做快速预诊断，了解需要准备什么资料
 
-请选择：
+请选择（输入1或2）：
 ```
 
-- 用户选1 → **收到回复后** Read `sunny-ai-project/skills/scene-discovery/SKILL.md` 并按其中指令执行，不要等用户再次确认
-- 用户选2 → **收到回复后** Read `sunny-ai-project/skills/scene-prediagnosis/SKILL.md` 并按其中指令执行，不要等用户再次确认
+**第二步（收到用户回复"1"或"2"后，才执行）：**
+- 用户回复"1"（或"从痛点出发"、"推荐"）→ Read `sunny-ai-project/skills/scene-discovery/SKILL.md` 并按其中指令执行
+- 用户回复"2"（或"目标工序预诊断"）→ Read `sunny-ai-project/skills/scene-prediagnosis/SKILL.md` 并按其中指令执行
 
 ---
 
