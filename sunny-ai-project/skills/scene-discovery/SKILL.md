@@ -1,6 +1,6 @@
 ---
 name: scene-discovery
-description: "舜宇工厂 AI 改善场景发现（Step 0-B / Workshop 模式）。当用户说\"不知道做什么 AI 项目\"、\"帮我找找哪里适合用 AI\"或参加舜宇 AI 场景发现 Workshop 时使用。流程：(1)发送会前准备清单（assets/intake-template.md）让用户提前填好个人定位/方针目标/KPI/部门预算/系统清单；(2)开场 2 问（项目授权 + 个性化方向）；(3)4 个 AI 主导的 workshop 互动模块替代人类 facilitator：W1 SIPOC 工作流程、W2 GQM 关键问题、W3 最头疼指标深挖、W4 利益相关方校准；(4)3 轮深度信息收集（三维痛点/数据现状/改善历史）；(5)输出 AI 场景机会地图 + Top 3 推荐；(6)W5 Bernard Marr AI Use Case Canvas（基于 Top 3 推荐生成 30 秒电梯演讲草稿）。完成后衔接场景预诊断。"
+description: "舜宇AI 改善场景发现（Step 0-B / Workshop 模式）。当用户说\"不知道做什么 AI 项目\"、\"帮我找找哪里适合用 AI\"或参加舜宇 AI 场景发现 Workshop 时使用。流程：(1)发送会前准备清单（assets/intake-template.md）让用户提前填好个人定位/方针目标/KPI/部门预算/系统清单；(2)开场问答；(3)4 个 AI 主导的 workshop 互动模块替代人类 facilitator：W1 SIPOC 工作流程、W2 GQM 关键问题、W3 最头疼指标深挖、W4 利益相关方校准；(4)3 轮深度信息收集（三维痛点/数据现状/改善历史）；(5)输出 AI 场景机会地图 + Top 3 推荐；(6)W5 Bernard Marr AI Use Case Canvas（基于 Top 3 推荐生成 30 秒电梯演讲草稿）。完成后衔接场景预诊断。"
 allowed-tools: deep_research WebFetch sunny_ai__feishu_create_doc sunny_ai__feishu_get_doc Read Write
 ---
 
@@ -33,8 +33,9 @@ query 构造：`[intake 目标中文] + "访谈框架 / 问卷设计 / 结构化
 
 ### 阶段 1：会前准备（对话开场前必做）
 
-1. 读 [intake-parsing.md](references/intake-parsing.md)
-2. 读 [assets/intake-template.md](assets/intake-template.md)，把模板全文写到飞书云文档，发给用户链接
+1. 读 [sunny-organization.md](references/sunny-organization.md)，了解舜宇集团组织架构、五大业务板块、子公司、厂区代码、上下游产业链，用于后续解析用户所在 BU/厂区/部门
+2. 读 [intake-parsing.md](references/intake-parsing.md)
+3. 读 [assets/intake-template.md](assets/intake-template.md)，把模板全文写到飞书云文档，发给用户链接
 3. 等用户提交后，按 `intake-parsing.md` 的规则解析 11 个原始字段 + 做 7 个槽位的二次推导
 4. 按 `intake-parsing.md` 的回放模板向用户确认理解
 5. 用户确认（或修正）后，**立即** Read `sunny-ai-project/skills/scene-discovery/SKILL.md` 继续执行阶段 2，不要等用户再次选择技能
