@@ -50,6 +50,8 @@ metadata:
 
 ### 选A：场景发现
 
+> ⛔ **先输出分支说明，停止，等待用户回复 1 或 2，再 Read 子 skill。** 禁止在输出分支说明后立即 Read scene-discovery——必须等用户选择。
+
 回复：
 ```
 好的，我们从头开始——先找到最值得投入的AI改善场景。
@@ -61,12 +63,14 @@ metadata:
 请选择：
 ```
 
-- 用户选1 → **立即** Read `sunny-ai-project/skills/scene-discovery/SKILL.md` 并按其中指令执行，不要等用户再次确认
-- 用户选2 → **立即** Read `sunny-ai-project/skills/scene-prediagnosis/SKILL.md` 并按其中指令执行，不要等用户再次确认
+- 用户选1 → **收到回复后** Read `sunny-ai-project/skills/scene-discovery/SKILL.md` 并按其中指令执行，不要等用户再次确认
+- 用户选2 → **收到回复后** Read `sunny-ai-project/skills/scene-prediagnosis/SKILL.md` 并按其中指令执行，不要等用户再次确认
 
 ---
 
 ### 选B：准备度评估
+
+> ⛔ **先输出分支说明，停止，等待用户回复 1/2/3，再 Read 子 skill。**
 
 回复：
 ```
@@ -81,9 +85,9 @@ metadata:
 （3）六维文档已经准备好了，直接进行准备度诊断
 ```
 
-- 用户选1 → **立即** Read `sunny-ai-project/skills/scene-prediagnosis/SKILL.md` 并按其中指令执行，不要等用户再次确认
-- 用户选2 → **立即** Read `sunny-ai-project/skills/readiness-collection/SKILL.md` 并按其中指令执行，不要等用户再次确认
-- 用户选3 → **立即** Read `sunny-ai-project/skills/readiness-diagnosis/SKILL.md` 并按其中指令执行，不要等用户再次确认
+- 用户选1 → **收到回复后** Read `sunny-ai-project/skills/scene-prediagnosis/SKILL.md` 并按其中指令执行，不要等用户再次确认
+- 用户选2 → **收到回复后** Read `sunny-ai-project/skills/readiness-collection/SKILL.md` 并按其中指令执行，不要等用户再次确认
+- 用户选3 → **收到回复后** Read `sunny-ai-project/skills/readiness-diagnosis/SKILL.md` 并按其中指令执行，不要等用户再次确认
 
 ---
 
