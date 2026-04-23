@@ -36,9 +36,9 @@ query 构造：`[intake 目标中文] + "访谈框架 / 问卷设计 / 结构化
 1. 读 [sunny-organization.md](references/sunny-organization.md)，了解舜宇集团组织架构、五大业务板块、子公司、厂区代码、上下游产业链，用于后续解析用户所在 BU/厂区/部门
 2. 读 [intake-parsing.md](references/intake-parsing.md)
 3. 读 [assets/intake-template.md](assets/intake-template.md)，把模板全文写到飞书云文档，发给用户链接
-3. 等用户提交后，按 `intake-parsing.md` 的规则解析 11 个原始字段 + 做 7 个槽位的二次推导
-4. 按 `intake-parsing.md` 的回放模板向用户确认理解
-5. 用户确认（或修正）后，**立即** Read `sunny-ai-project/skills/scene-discovery/SKILL.md` 继续执行阶段 2，不要等用户再次选择技能
+4. 等用户提交后，按 `intake-parsing.md` 的规则解析 11 个原始字段 + 做 7 个槽位的二次推导
+5. 按 `intake-parsing.md` 的回放模板向用户确认理解
+6. 用户确认（或修正）后，**立即** Read `sunny-ai-project/skills/scene-discovery/SKILL.md` 继续执行阶段 2，不要等用户再次选择技能
 
 ### 阶段 2：开场问答（严格串行，每步必须等用户回复）
 
